@@ -9,4 +9,5 @@ import (
 //go:generate mockery --name=Service
 type Service interface {
 	Create(ctx context.Context, input *model.Request) (ID int, err error)
+	Get(ctx context.Context, request *model.FitterReadUsers) (*model.ReadResponseUsers, error)
 }
