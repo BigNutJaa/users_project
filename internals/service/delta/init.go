@@ -1,15 +1,15 @@
-package users
+package moving
 
 import (
 	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/repository/postgres"
 )
 
-type UsersService struct {
+type MovingService struct {
 	repository postgres.Repository
 }
 
 func NewService(r postgres.Repository) (service Service) {
-	return &UsersService{
+	return &MovingService{
 		repository: r,
 	}
 }
