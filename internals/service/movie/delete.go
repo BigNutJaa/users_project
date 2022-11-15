@@ -1,27 +1,25 @@
-package stock
+package movie
 
 import (
 	"context"
+	"github.com/BigNutJaa/user-service/internals/model/movie"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
 )
 
-func (s *StockService) Delete(ctx context.Context, request *model.FitterDeleteStock) (*model.DeleteResponseStock, error) {
-	makeFilter := s.makeFilterStockDelete(request)
-	stockDelete := &entity.Stock{}
+func (s *MovieService) Delete(ctx context.Context, request *movie.FitterDeleteMovie) (*model.DeleteResponseMovie, error) {
+	makeFilter := s.makeFilterMovieDelete(request)
+	movieDelete := &entity.Movie{}
 
-	err := s.repository.Delete(makeFilter, stockDelete)
+	err := s.repository.Delete(makeFilter, movieDelete)
 
-	return &model.DeleteResponseStock{
-		Name:   stockDelete.Name,
-		Detail: stockDelete.Detail,
-		Qty:    stockDelete.Qty,
-		Id:     int32(stockDelete.ID),
+	return &model.DeleteResponseMovie{
+		Id: int32(movieDelete.ID),
 	}, err
 }
 
-func (s *StockService) makeFilterStockDelete(filters *model.FitterDeleteStock) (output map[string]interface{}) {
+func (s *MovieService) makeFilterMovieDelete(filters *model.FitterDeleteMovie) (output map[string]interface{}) {
 	output = make(map[string]interface{})
 
 	if filters.Id > 0 {

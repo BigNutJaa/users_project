@@ -4,6 +4,8 @@ package api_v1;
 import "google/api/annotations.proto";
 import "protocGenSwagger/options/annotations.proto";
 
+
+
 option go_package = "/.;api_v1";
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
@@ -12,7 +14,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
     version: "1.0"
     contact: {
       name: "blueprint-roa-golang-grpc-gateway"
-      url: "http://localhost:3001"
+      url: "http://localhost:3011"
       email: "chat@robowealth.co.th"
     }
   }
@@ -53,12 +55,33 @@ message CategoryCreateResponse{
   int32 id = 1;
 }
 
+message CategoryUpdateRequest {
+  string name = 1;
+  string detail = 2;
+  int32 id = 3;
+  string nameUpdate = 4;
+  string detailUpdate = 5;
+}
+
+
+message CategoryUpdateResponse{
+  string name = 1;
+  string detail = 2;
+  int32 id = 3;
+}
+
 
 service CategoryService {
   rpc Create(CategoryCreateRequest) returns (CategoryCreateResponse) {
     option (google.api.http) = {
       post: "/api/v1/category"
       body: "*",
+    };
+  }
+  rpc Update(CategoryUpdateRequest) returns (CategoryUpdateResponse) {
+    option (google.api.http) = {
+      patch: "/api/v1/category"
+//      body: "*",
     };
   }
 }

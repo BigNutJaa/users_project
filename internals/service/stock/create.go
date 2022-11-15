@@ -1,17 +1,18 @@
-package category
+package stock
 
 import (
 	"context"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/category"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/stock"
 )
 
-func (s *CategoryService) Create(ctx context.Context, request *model.Request) (int, error) {
+func (s *StockService) Create(ctx context.Context, request *model.Request) (int, error) {
 
-	input := &entity.Category{
+	input := &entity.Stock{
 		Name:   request.Name,
 		Detail: request.Detail,
+		Qty:    request.Qty,
 	}
 
 	err := s.repository.Create(input)

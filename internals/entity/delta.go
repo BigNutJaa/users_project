@@ -1,6 +1,6 @@
 package entity
 
-type Moving struct {
+type Delta struct {
 	ID        int    `gorm:"column:id; primary_key; AUTO_INCREMENT"`
 	MovieName string `gorm:"column:movieName"`
 	Date      string `gorm:"column:date"`
@@ -12,6 +12,6 @@ type Moving struct {
 	UpdatedBy string `gorm:"column:updated_by"`
 }
 
-func (Moving) TableName() string {
-	return "movings"
+func (Delta) TableName() string {
+	return "deltas"
 }

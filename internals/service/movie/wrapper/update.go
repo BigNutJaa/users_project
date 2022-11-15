@@ -2,13 +2,13 @@ package wrapper
 
 import (
 	"context"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
 
 	"github.com/opentracing/opentracing-go"
 )
 
-func (wrp *Wrapper) Update(ctx context.Context, input *model.FitterUpdateStock) (*model.UpdateResponseStock, error) {
-	sp, ctx := opentracing.StartSpanFromContext(ctx, "Service.Stock.Update")
+func (wrp *Wrapper) Update(ctx context.Context, input *model.FitterUpdateMovie) (*model.UpdateResponseMovie, error) {
+	sp, ctx := opentracing.StartSpanFromContext(ctx, "Service.Movie.Update")
 	defer sp.Finish()
 
 	id, err := wrp.Service.Update(ctx, input)

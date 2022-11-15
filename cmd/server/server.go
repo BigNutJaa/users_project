@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/container"
+	"github.com/BigNutJaa/user-service/internals/container"
 	log "github.com/sirupsen/logrus"
 )
 

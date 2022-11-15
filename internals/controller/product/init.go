@@ -1,7 +1,7 @@
 package product
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/service/product/wrapper"
+	"github.com/BigNutJaa/user-service/internals/service/product/wrapper"
 )
 
 type Controller struct {

@@ -1,54 +1,60 @@
-package stock
+package movie
 
 import (
 	"context"
+	"github.com/BigNutJaa/user-service/internals/utils"
 	"github.com/pkg/errors"
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/utils"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
 )
 
-func (s *StockService) List(ctx context.Context, request *model.FitterListStock, pagination *utils.PaginationOptions) (*utils.Pagination, error) {
-	makeFilter := s.makeFilterStockList(request)
+func (s *MovieService) List(ctx context.Context, request *model.FitterListMovie, pagination *utils.PaginationOptions) (*utils.Pagination, error) {
+	makeFilter := s.makeFilterMovieList(request)
 
 	offset, limit := utils.GetOffsetLimit(pagination)
 
-	list, err := s.repository.List("stocks", offset, limit, makeFilter, "created_at DESC", &[]*entity.Stock{})
+	list, err := s.repository.List("movies", offset, limit, makeFilter, "created_at DESC", &[]*entity.Movie{})
 	if err != nil {
 		return nil, err
 	}
-	items, ok := list.Items.(*[]*entity.Stock)
+	items, ok := list.Items.(*[]*entity.Movie)
 	if !ok {
 		return nil, errors.New("Error")
 	}
-	list.Items = s.mapListStock(items)
+	list.Items = s.mapListMovie(items)
 
 	return list, err
 }
 
-func (s *StockService) mapListStock(ent *[]*entity.Stock) []*model.ListResponseStock {
+func (s *MovieService) mapListMovie(ent *[]*entity.Movie) []*model.ListResponseMovie {
 
-	var list []*model.ListResponseStock
+	var list []*model.ListResponseMovie
 	for _, v := range *ent {
-		list = append(list, &model.ListResponseStock{
-			Id:     int32(v.ID),
-			Name:   v.Name,
-			Detail: v.Detail,
-			Qty:    v.Qty,
+		list = append(list, &model.ListResponseMovie{
+			MovieName: v.MovieName,
+			Date:      v.Date,
+			Time:      v.Time,
+			CinemaNo:  v.CinemaNo,
 		})
 	}
 	return list
 }
 
-func (s *StockService) makeFilterStockList(filters *model.FitterListStock) (output map[string]interface{}) {
+func (s *MovieService) makeFilterMovieList(filters *model.FitterListMovie) (output map[string]interface{}) {
 	output = make(map[string]interface{})
 
-	if len(filters.Name) > 0 {
-		output["name"] = filters.Name
+	if len(filters.MovieName) > 0 {
+		output["movieName"] = filters.MovieName
 	}
-	if len(filters.Detail) > 0 {
-		output["detail"] = filters.Detail
+	if len(filters.Date) > 0 {
+		output["date"] = filters.Date
+	}
+	if len(filters.Time) > 0 {
+		output["time"] = filters.Time
+	}
+	if len(filters.CinemaNo) > 0 {
+		output["cinemaNo"] = filters.CinemaNo
 	}
 
 	return output

@@ -1,15 +1,15 @@
-package moving
+package delta
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/repository/postgres"
+	"github.com/BigNutJaa/user-service/internals/repository/postgres"
 )
 
-type MovingService struct {
+type DeltaService struct {
 	repository postgres.Repository
 }
 
 func NewService(r postgres.Repository) (service Service) {
-	return &MovingService{
+	return &DeltaService{
 		repository: r,
 	}
 }

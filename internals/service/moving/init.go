@@ -1,15 +1,20 @@
-package movie
+package moving
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/repository/postgres"
+	"github.com/BigNutJaa/user-service/internals/repository/postgres"
+	"github.com/BigNutJaa/user-service/internals/service/movie"
 )
 
-type MovieService struct {
+type MovingService struct {
 	repository postgres.Repository
+	///
+	MovieService movie.Service
 }
 
-func NewService(r postgres.Repository) (service Service) {
-	return &MovieService{
+func NewService(r postgres.Repository, movieService movie.Service) (service Service) {
+	return &MovingService{
 		repository: r,
+		///
+		MovieService: movieService,
 	}
 }

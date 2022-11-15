@@ -1,4 +1,4 @@
-module github.com/robowealth-mutual-fund/blueprint-roa-golang
+module github.com/BigNutJaa/user-service
 
 go 1.18
 
@@ -10,6 +10,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.10.0
 	github.com/opentracing/opentracing-go v1.2.0
+	github.com/pkg/errors v0.8.1
 	github.com/robowealth-mutual-fund/shared-utility v1.0.2
 	github.com/sirupsen/logrus v1.4.2
 	github.com/stretchr/testify v1.7.0
@@ -40,7 +41,6 @@ require (
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/pkg/errors v0.8.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
 	go.uber.org/atomic v1.6.0 // indirect

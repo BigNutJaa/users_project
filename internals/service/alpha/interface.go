@@ -1,8 +1,8 @@
-package delta
+package alpha
 
 import (
 	"context"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/delta"
+	model "github.com/BigNutJaa/user-service/internals/model/alpha"
 )
 
 //go:generate mockery --name=Service

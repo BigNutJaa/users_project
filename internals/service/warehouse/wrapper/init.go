@@ -1,7 +1,7 @@
 package wrapper
 
 import (
-	service "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/service/warehouse"
+	service "github.com/BigNutJaa/user-service/internals/service/warehouse"
 	"go.uber.org/dig"
 )
 

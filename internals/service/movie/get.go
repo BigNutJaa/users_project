@@ -1,34 +1,41 @@
-package stock
+package movie
 
 import (
 	"context"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
 )
 
-func (s *StockService) Get(ctx context.Context, request *model.FitterReadStock) (*model.ReadResponseStock, error) {
-	makeFilter := s.makeFilterStock(request)
-	stock := &entity.Stock{}
+func (s *MovieService) Get(ctx context.Context, request *model.FitterReadMovie) (*model.ReadResponseMovie, error) {
+	makeFilter := s.makeFilterMovie(request)
+	movie := &entity.Movie{}
 
-	err := s.repository.Find(makeFilter, stock)
+	err := s.repository.Find(makeFilter, movie)
 
-	return &model.ReadResponseStock{
-		Name:   stock.Name,
-		Detail: stock.Detail,
-		Qty:    stock.Qty,
-		Id:     int32(stock.ID),
+	return &model.ReadResponseMovie{
+		MovieName: movie.MovieName,
+		Date:      movie.Date,
+		Time:      movie.Time,
+		CinemaNo:  movie.CinemaNo,
+		Id:        int32(movie.ID),
 	}, err
 }
 
-func (s *StockService) makeFilterStock(filters *model.FitterReadStock) (output map[string]interface{}) {
+func (s *MovieService) makeFilterMovie(filters *model.FitterReadMovie) (output map[string]interface{}) {
 	output = make(map[string]interface{})
 
-	if len(filters.Name) > 0 {
-		output["name"] = filters.Name
+	if len(filters.MovieName) > 0 {
+		output["movieName"] = filters.MovieName
 	}
-	if len(filters.Detail) > 0 {
-		output["detail"] = filters.Detail
+	if len(filters.Date) > 0 {
+		output["date"] = filters.Date
+	}
+	if len(filters.Time) > 0 {
+		output["time"] = filters.Time
+	}
+	if len(filters.CinemaNo) > 0 {
+		output["cinemaNo"] = filters.CinemaNo
 	}
 	if filters.Id > 0 {
 		output["id"] = filters.Id

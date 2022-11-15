@@ -12,7 +12,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
     version: "1.0"
     contact: {
       name: "blueprint-roa-golang-grpc-gateway"
-      url: "http://localhost:3001"
+      url: "http://localhost:3011"
       email: "chat@robowealth.co.th"
     }
   }
@@ -53,12 +53,29 @@ message WarehouseCreateResponse{
   int32 id = 1;
 }
 
+message WarehouseDeleteRequest {
+  string name = 1;
+  string detail = 2;
+  int32 id = 3;
+}
+
+message WarehouseDeleteResponse{
+  string name = 1;
+  string detail = 2;
+  int32 id = 3;
+}
+
 
 service WarehouseService {
   rpc Create(WarehouseCreateRequest) returns (WarehouseCreateResponse) {
     option (google.api.http) = {
       post: "/api/v1/warehouse"
       body: "*",
+    };
+  }
+  rpc Delete(WarehouseDeleteRequest) returns (WarehouseDeleteResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/warehouse"
     };
   }
 }

@@ -1,13 +1,13 @@
-package users
+package category
 
 import (
 	"context"
 
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/users"
+	model "github.com/BigNutJaa/user-service/internals/model/category"
 )
 
 //go:generate mockery --name=Service
 type Service interface {
 	Create(ctx context.Context, input *model.Request) (ID int, err error)
-	Get(ctx context.Context, request *model.FitterReadUsers) (*model.ReadResponseUsers, error)
+	Patch(ctx context.Context, request *model.FitterUpdateCategory) (*model.UpdateResponseCategory, error)
 }

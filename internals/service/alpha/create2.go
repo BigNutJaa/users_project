@@ -1,14 +1,15 @@
-package delta
+package alpha
 
 import (
 	"context"
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/delta"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/alpha"
 )
 
-func (s *DeltaService) Create2(ctx context.Context, request *model.Request) (int, error) {
+func (s *AlphaService) Create2(ctx context.Context, request *model.Request) (int, error) {
+	//defer wg.Done()
 
-	input := &entity.Delta{
+	input := &entity.Alpha{
 		MovieName: request.MovieName,
 		Date:      request.Date,
 		Time:      request.Time,

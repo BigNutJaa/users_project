@@ -3,8 +3,8 @@ package grpcclient
 import (
 	log "github.com/sirupsen/logrus"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/config"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
+	"github.com/BigNutJaa/user-service/internals/config"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 
 	"google.golang.org/grpc"
 )

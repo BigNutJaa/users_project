@@ -3,19 +3,19 @@ package delta
 import (
 	"context"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/delta"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
+	model "github.com/BigNutJaa/user-service/internals/model/delta"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 )
 
-func (c *Controller) Create(ctx context.Context, request *apiV1.DeltaCreateRequest) (*apiV1.DeltaCreateResponse, error) {
+func (c *Controller) Create2(ctx context.Context, request *apiV1.Delta2CreateRequest) (*apiV1.Delta2CreateResponse, error) {
 	span, ctx := opentracing.StartSpanFromContextWithTracer(
 		ctx,
 		opentracing.GlobalTracer(),
-		"handler.delta.Create",
+		"handler.delta2.Create2",
 	)
 	defer span.Finish()
 	span.LogKV("Input Handler", request)
-	id, err := c.service.Create(ctx, &model.Request{
+	id, err := c.service.Create2(ctx, &model.Request{
 		MovieName: request.GetMovieName(),
 		Date:      request.GetDate(),
 		Time:      request.GetTime(),
@@ -25,5 +25,5 @@ func (c *Controller) Create(ctx context.Context, request *apiV1.DeltaCreateReque
 	if err != nil {
 		return nil, err
 	}
-	return &apiV1.DeltaCreateResponse{Id: int32(id)}, nil
+	return &apiV1.Delta2CreateResponse{Id: int32(id)}, nil
 }

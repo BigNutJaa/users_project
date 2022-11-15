@@ -8,8 +8,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/config"
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
+	"github.com/BigNutJaa/user-service/internals/config"
+	"github.com/BigNutJaa/user-service/internals/entity"
 
 	"gorm.io/gorm/logger"
 
@@ -60,6 +60,31 @@ func (db *DB) MigrateDB() {
 
 		log.Println("Error :", err)
 	}
+	if !db.Connection.Migrator().HasTable(entity.Stock{}.TableName()) {
+		err := db.Connection.AutoMigrate(&entity.Stock{})
+
+		log.Println("Error :", err)
+	}
+	if !db.Connection.Migrator().HasTable(entity.Movie{}.TableName()) {
+		err := db.Connection.AutoMigrate(&entity.Movie{})
+
+		log.Println("Error :", err)
+	}
+	if !db.Connection.Migrator().HasTable(entity.Moving{}.TableName()) {
+		err := db.Connection.AutoMigrate(&entity.Moving{})
+
+		log.Println("Error :", err)
+	}
+	if !db.Connection.Migrator().HasTable(entity.Delta{}.TableName()) {
+		err := db.Connection.AutoMigrate(&entity.Delta{})
+
+		log.Println("Error :", err)
+	}
+	if !db.Connection.Migrator().HasTable(entity.Alpha{}.TableName()) {
+		err := db.Connection.AutoMigrate(&entity.Alpha{})
+
+		log.Println("Error :", err)
+	}
 }
 
 // NewServerBase is start connection database.
@@ -89,7 +114,7 @@ func NewServerBase(env config.Configuration) *DB {
 	}
 
 	if env.Env != "production" {
-		db.Logger = logger.Default.LogMode(logger.Info)
+		db.Logger = logger.Default.LogMode(logger.Silent)
 	}
 
 	sqlDB.SetConnMaxLifetime(time.Minute * 5)

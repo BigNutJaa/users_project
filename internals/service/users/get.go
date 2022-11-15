@@ -3,8 +3,8 @@ package users
 import (
 	"context"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/users"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/users"
 )
 
 func (s *UsersService) Get(ctx context.Context, request *model.FitterReadUsers) (*model.ReadResponseUsers, error) {

@@ -1,7 +1,7 @@
-package stock
+package movie
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/service/stock/wrapper"
+	"github.com/BigNutJaa/user-service/internals/service/movie/wrapper"
 )
 
 type Controller struct {

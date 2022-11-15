@@ -3,10 +3,10 @@ package wrapper
 import (
 	"go.uber.org/dig"
 
-	service "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/service/movie"
+	service "github.com/BigNutJaa/user-service/internals/service/moving"
 )
 
 type Wrapper struct {
-	dig.In  `name:"wrapperMovie"`
+	dig.In  `name:"wrapperMoving"`
 	Service service.Service
 }

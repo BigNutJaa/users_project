@@ -10,11 +10,11 @@ option go_package = "/.;api_v1";
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
   info: {
-    title: "Moving Service"
+    title: "Delta Service"
     version: "1.0"
     contact: {
       name: "blueprint-roa-golang-grpc-gateway"
-      url: "http://localhost:3001"
+      url: "http://localhost:3011"
       email: "chat@robowealth.co.th"
     }
   }
@@ -34,7 +34,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
   }
 };
 
-message Moving {
+message Delta {
   string movieName = 1;
   string date = 2;
   string time = 3;
@@ -45,7 +45,7 @@ message Moving {
   string updated_by = 9;
 }
 
-message MovingCreateRequest {
+message DeltaCreateRequest {
   string movieName = 1;
   string date = 2;
   string time = 3;
@@ -53,16 +53,33 @@ message MovingCreateRequest {
 
 }
 
-message MovingCreateResponse{
+message DeltaCreateResponse{
+  int32 id = 1;
+}
+
+message Delta2CreateRequest {
+  string movieName = 1;
+  string date = 2;
+  string time = 3;
+  string cinemaNo = 4;
+
+}
+
+message Delta2CreateResponse{
   int32 id = 1;
 }
 
 
-
-service MovingService {
-  rpc Create(MovingCreateRequest) returns (MovingCreateResponse) {
+service DeltaService {
+  rpc Create(DeltaCreateRequest) returns (DeltaCreateResponse) {
     option (google.api.http) = {
-      post: "/api/v1/moving"
+      post: "/api/v1/delta"
+    };
+  }
+  rpc Create2(Delta2CreateRequest) returns (Delta2CreateResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/delta2"
     };
   }
 }
+

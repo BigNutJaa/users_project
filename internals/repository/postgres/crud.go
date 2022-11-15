@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/utils"
+	"github.com/BigNutJaa/user-service/internals/utils"
 	"gorm.io/gorm"
 )
 
@@ -41,6 +41,17 @@ func (r *PostgresRepository) Raw(ent interface{}, sql string, value ...interface
 
 func (r *PostgresRepository) Update(filters map[string]interface{}, ent interface{}) error {
 	result := r.db.Connection.Where(filters).Updates(ent)
+
+	if result.RowsAffected == 0 {
+		return gorm.ErrRecordNotFound
+	}
+
+	return result.Error
+}
+
+// new implement Delete
+func (r *PostgresRepository) Delete(filters map[string]interface{}, ent interface{}) error {
+	result := r.db.Connection.Where(filters).Delete(ent)
 
 	if result.RowsAffected == 0 {
 		return gorm.ErrRecordNotFound

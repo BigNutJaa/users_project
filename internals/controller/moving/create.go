@@ -1,17 +1,17 @@
-package movie
+package moving
 
 import (
 	"context"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/movie"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
+	model "github.com/BigNutJaa/user-service/internals/model/moving"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 )
 
-func (c *Controller) Create(ctx context.Context, request *apiV1.MovieCreateRequest) (*apiV1.MovieCreateResponse, error) {
+func (c *Controller) Create(ctx context.Context, request *apiV1.MovingCreateRequest) (*apiV1.MovingCreateResponse, error) {
 	span, ctx := opentracing.StartSpanFromContextWithTracer(
 		ctx,
 		opentracing.GlobalTracer(),
-		"handler.movie.Create",
+		"handler.moving.Create",
 	)
 	defer span.Finish()
 	span.LogKV("Input Handler", request)
@@ -25,5 +25,5 @@ func (c *Controller) Create(ctx context.Context, request *apiV1.MovieCreateReque
 	if err != nil {
 		return nil, err
 	}
-	return &apiV1.MovieCreateResponse{Id: int32(id)}, nil
+	return &apiV1.MovingCreateResponse{Id: int32(id)}, nil
 }

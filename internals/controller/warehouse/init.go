@@ -1,7 +1,7 @@
 package warehouse
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/service/warehouse/wrapper"
+	"github.com/BigNutJaa/user-service/internals/service/warehouse/wrapper"
 )
 
 type Controller struct {

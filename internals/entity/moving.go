@@ -1,6 +1,6 @@
 package entity
 
-type Movie struct {
+type Moving struct {
 	ID        int    `gorm:"column:id; primary_key; AUTO_INCREMENT"`
 	MovieName string `gorm:"column:movieName"`
 	Date      string `gorm:"column:date"`
@@ -12,6 +12,6 @@ type Movie struct {
 	UpdatedBy string `gorm:"column:updated_by"`
 }
 
-func (Movie) TableName() string {
-	return "movies"
+func (Moving) TableName() string {
+	return "movings"
 }

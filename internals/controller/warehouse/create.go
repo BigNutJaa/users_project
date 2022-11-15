@@ -3,8 +3,8 @@ package warehouse
 import (
 	"context"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/warehouse"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
+	model "github.com/BigNutJaa/user-service/internals/model/warehouse"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 	"github.com/sirupsen/logrus"
 )
 

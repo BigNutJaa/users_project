@@ -1,71 +1,71 @@
-package stock
+package movie
 
 type Request struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 }
 
-type FitterReadStock struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+type FitterReadMovie struct {
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 	Id        int32
 }
 
-type ReadResponseStock struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+type ReadResponseMovie struct {
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 	Id        int32
 }
 
-type FitterDeleteStock struct {
+type FitterDeleteMovie struct {
 	Id int32
 }
 
-type DeleteResponseStock struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+type DeleteResponseMovie struct {
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 	Id        int32
 }
 
-type FitterUpdateStock struct {
-	movieName      string
-	date           string
-	time           string
-	cinemaNo       string
+type FitterUpdateMovie struct {
+	MovieName      string
+	Date           string
+	Time           string
+	CinemaNo       string
 	Id             int32
-	dateUpdate     string
-	timeUpdate     string
-	cinemaNoUpdate string
+	DateUpdate     string
+	TimeUpdate     string
+	CinemaNoUpdate string
 }
 
-type UpdateResponseStock struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+type UpdateResponseMovie struct {
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 	Id        int32
 }
 
-type FitterListStock struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+type FitterListMovie struct {
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 	Page      int64
 	Per_page  int64
 }
 
-type ListResponseStock struct {
-	movieName string
-	date      string
-	time      string
-	cinemaNo  string
+type ListResponseMovie struct {
+	MovieName string
+	Date      string
+	Time      string
+	CinemaNo  string
 }

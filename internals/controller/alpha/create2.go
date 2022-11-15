@@ -1,17 +1,17 @@
-package delta
+package alpha
 
 import (
 	"context"
+	model "github.com/BigNutJaa/user-service/internals/model/alpha"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/delta"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
 )
 
-func (c *Controller) Create2(ctx context.Context, request *apiV1.Delta2CreateRequest) (*apiV1.Delta2CreateResponse, error) {
+func (c *Controller) Create2(ctx context.Context, request *apiV1.Alpha2CreateRequest) (*apiV1.Alpha2CreateResponse, error) {
 	span, ctx := opentracing.StartSpanFromContextWithTracer(
 		ctx,
 		opentracing.GlobalTracer(),
-		"handler.delta2.Create2",
+		"handler.alpha2.Create2",
 	)
 	defer span.Finish()
 	span.LogKV("Input Handler", request)
@@ -25,5 +25,5 @@ func (c *Controller) Create2(ctx context.Context, request *apiV1.Delta2CreateReq
 	if err != nil {
 		return nil, err
 	}
-	return &apiV1.Delta2CreateResponse{Id: int32(id)}, nil
+	return &apiV1.Alpha2CreateResponse{Id: int32(id)}, nil
 }

@@ -1,15 +1,15 @@
-package delta
+package alpha
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/repository/postgres"
+	"github.com/BigNutJaa/user-service/internals/repository/postgres"
 )
 
-type DeltaService struct {
+type AlphaService struct {
 	repository postgres.Repository
 }
 
 func NewService(r postgres.Repository) (service Service) {
-	return &DeltaService{
+	return &AlphaService{
 		repository: r,
 	}
 }

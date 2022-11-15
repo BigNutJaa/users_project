@@ -2,7 +2,7 @@ package jaeger
 
 import (
 	"github.com/opentracing/opentracing-go"
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/config"
+	"github.com/BigNutJaa/user-service/internals/config"
 	log "github.com/sirupsen/logrus"
 	jaegerConf "github.com/uber/jaeger-client-go/config"
 	jaegerLog "github.com/uber/jaeger-client-go/log"

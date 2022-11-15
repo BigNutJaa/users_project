@@ -2,16 +2,17 @@ package wrapper
 
 import (
 	"context"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	model "github.com/BigNutJaa/user-service/internals/model/stock"
+	"github.com/BigNutJaa/user-service/internals/utils"
 
 	"github.com/opentracing/opentracing-go"
 )
 
-func (wrp *Wrapper) Get(ctx context.Context, input *model.FitterReadStock) (*model.ReadResponseStock, error) {
-	sp, ctx := opentracing.StartSpanFromContext(ctx, "Service.Stock.Get")
+func (wrp *Wrapper) List(ctx context.Context, input *model.FitterListStock, pagination *utils.PaginationOptions) (*utils.Pagination, error) {
+	sp, ctx := opentracing.StartSpanFromContext(ctx, "Service.Stock.List")
 	defer sp.Finish()
 
-	id, err := wrp.Service.Get(ctx, input)
+	id, err := wrp.Service.List(ctx, input, pagination)
 
 	sp.LogKV("ID", id)
 	sp.LogKV("err", err)

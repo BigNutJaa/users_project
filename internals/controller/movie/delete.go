@@ -1,31 +1,28 @@
-package stock
+package movie
 
 import (
 	"context"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 )
 
-func (c *Controller) Delete(ctx context.Context, request *apiV1.StockDeleteRequest) (*apiV1.StockDeleteResponse, error) {
+func (c *Controller) Delete(ctx context.Context, request *apiV1.MovieDeleteRequest) (*apiV1.MovieDeleteResponse, error) {
 	span, ctx := opentracing.StartSpanFromContextWithTracer(
 		ctx,
 		opentracing.GlobalTracer(),
-		"handler.stock.Delete",
+		"handler.movie.Delete",
 	)
 	defer span.Finish()
 	span.LogKV("Input Handler", request)
-	stockData, err := c.service.Delete(ctx, &model.FitterDeleteStock{
+	movieData, err := c.service.Delete(ctx, &model.FitterDeleteMovie{
 		Id: request.GetId(),
 	})
 
 	if err != nil {
 		return nil, err
 	}
-	return &apiV1.StockDeleteResponse{
-		Name:   stockData.Name,
-		Detail: stockData.Detail,
-		Qty:    stockData.Qty,
-		Id:     stockData.Id,
+	return &apiV1.MovieDeleteResponse{
+		Id: movieData.Id,
 	}, nil
 }

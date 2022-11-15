@@ -2,16 +2,16 @@ package wrapper
 
 import (
 	"context"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	model "github.com/BigNutJaa/user-service/internals/model/stock"
 
 	"github.com/opentracing/opentracing-go"
 )
 
-func (wrp *Wrapper) Get(ctx context.Context, input *model.FitterReadStock) (*model.ReadResponseStock, error) {
-	sp, ctx := opentracing.StartSpanFromContext(ctx, "Service.Stock.Get")
+func (wrp *Wrapper) Delete(ctx context.Context, input *model.FitterDeleteStock) (*model.DeleteResponseStock, error) {
+	sp, ctx := opentracing.StartSpanFromContext(ctx, "Service.Stock.Delete")
 	defer sp.Finish()
 
-	id, err := wrp.Service.Get(ctx, input)
+	id, err := wrp.Service.Delete(ctx, input)
 
 	sp.LogKV("ID", id)
 	sp.LogKV("err", err)

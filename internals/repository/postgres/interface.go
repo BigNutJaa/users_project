@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/utils"
+	"github.com/BigNutJaa/user-service/internals/utils"
 
 	"gorm.io/gorm"
 )
@@ -15,6 +15,8 @@ type Repository interface {
 	Last(filters map[string]interface{}, ent interface{}) error
 	List(tableName string, offset, limit int64, filters, order, ent interface{}) (*utils.Pagination, error)
 	Update(filters map[string]interface{}, ent interface{}) error
+	// new implement delete
+	Delete(filters map[string]interface{}, ent interface{}) error
 	Begin() *gorm.DB
 	Commit(db *gorm.DB) *gorm.DB
 	Rollback(db *gorm.DB) *gorm.DB

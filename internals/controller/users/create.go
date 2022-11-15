@@ -3,9 +3,9 @@ package users
 import (
 	"context"
 
+	model "github.com/BigNutJaa/user-service/internals/model/users"
+	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/users"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
 )
 
 func (c *Controller) Create(ctx context.Context, request *apiV1.UsersCreateRequest) (*apiV1.UsersCreateResponse, error) {

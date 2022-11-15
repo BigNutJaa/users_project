@@ -1,18 +1,19 @@
-package stock
+package movie
 
 import (
 	"context"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
 )
 
-func (s *StockService) Create(ctx context.Context, request *model.Request) (int, error) {
+func (s *MovieService) Create(ctx context.Context, request *model.Request) (int, error) {
 
-	input := &entity.Stock{
-		Name:   request.Name,
-		Detail: request.Detail,
-		Qty:    request.Qty,
+	input := &entity.Movie{
+		MovieName: request.MovieName,
+		Date:      request.Date,
+		Time:      request.Time,
+		CinemaNo:  request.CinemaNo,
 	}
 
 	err := s.repository.Create(input)

@@ -1,40 +1,46 @@
-package stock
+package movie
 
 import (
 	"context"
 
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/entity"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	"github.com/BigNutJaa/user-service/internals/entity"
+	model "github.com/BigNutJaa/user-service/internals/model/movie"
 )
 
-func (s *StockService) Update(ctx context.Context, request *model.FitterUpdateStock) (*model.UpdateResponseStock, error) {
-	makeFilter := s.makeFilterStockUpdate(request)
-	stockUpdate := &entity.Stock{
-		Qty: request.QtyUpdate,
-		ID:  int(request.Id),
+func (s *MovieService) Update(ctx context.Context, request *model.FitterUpdateMovie) (*model.UpdateResponseMovie, error) {
+	makeFilter := s.makeFilterMovieUpdate(request)
+	movieUpdate := &entity.Movie{
+		Time:     request.TimeUpdate,
+		Date:     request.DateUpdate,
+		CinemaNo: request.CinemaNoUpdate,
+		ID:       int(request.Id),
 	}
 
-	err := s.repository.Update(makeFilter, stockUpdate)
+	err := s.repository.Update(makeFilter, movieUpdate)
 
-	return &model.UpdateResponseStock{
-		Name:   stockUpdate.Name,
-		Detail: stockUpdate.Detail,
-		Qty:    stockUpdate.Qty,
-		Id:     int32(stockUpdate.ID),
+	return &model.UpdateResponseMovie{
+		MovieName: movieUpdate.MovieName,
+		Date:      movieUpdate.Date,
+		Time:      movieUpdate.Time,
+		CinemaNo:  movieUpdate.CinemaNo,
+		Id:        int32(movieUpdate.ID),
 	}, err
 }
 
-func (s *StockService) makeFilterStockUpdate(filters *model.FitterUpdateStock) (output map[string]interface{}) {
+func (s *MovieService) makeFilterMovieUpdate(filters *model.FitterUpdateMovie) (output map[string]interface{}) {
 	output = make(map[string]interface{})
 
-	if len(filters.Name) > 0 {
-		output["name"] = filters.Name
+	if len(filters.MovieName) > 0 {
+		output["movieName"] = filters.MovieName
 	}
-	if len(filters.Detail) > 0 {
-		output["detail"] = filters.Detail
+	if len(filters.Date) > 0 {
+		output["date"] = filters.Date
 	}
-	if filters.Qty > 0 {
-		output["qty"] = filters.Qty
+	if len(filters.Time) > 0 {
+		output["time"] = filters.Time
+	}
+	if len(filters.CinemaNo) > 0 {
+		output["cinemaNo"] = filters.CinemaNo
 	}
 	if filters.Id > 0 {
 		output["id"] = filters.Id

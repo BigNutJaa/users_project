@@ -2,7 +2,8 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
-
+user -> database: create user
+database -> user: Response
 Alice -> Bob: Authentication Request
 Bob --> Alice: Authentication Response
 

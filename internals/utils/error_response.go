@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/constants"
+	"github.com/BigNutJaa/user-service/internals/constants"
 
 	"google.golang.org/genproto/googleapis/rpc/errdetails"
 	"google.golang.org/grpc/codes"
