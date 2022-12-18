@@ -3,8 +3,8 @@ package stock
 import (
 	"context"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/BigNutJaa/user-service/internals/model/stock"
-	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
+	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
+	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
 )
 
 func (c *Controller) Delete(ctx context.Context, request *apiV1.StockDeleteRequest) (*apiV1.StockDeleteResponse, error) {
