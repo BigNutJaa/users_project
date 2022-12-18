@@ -2,9 +2,9 @@ package wrapper
 
 import (
 	"context"
-	"github.com/BigNutJaa/user-service/internals/utils"
+	"github.com/BigNutJaa/users/internals/utils"
 
-	model "github.com/BigNutJaa/user-service/internals/model/users"
+	model "github.com/BigNutJaa/users/internals/model/users"
 
 	"github.com/opentracing/opentracing-go"
 )

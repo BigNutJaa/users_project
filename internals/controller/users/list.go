@@ -3,10 +3,10 @@ package users
 import (
 	"context"
 	"errors"
-	"github.com/BigNutJaa/user-service/internals/utils"
+	"github.com/BigNutJaa/users/internals/utils"
 
-	model "github.com/BigNutJaa/user-service/internals/model/users"
-	apiV1 "github.com/BigNutJaa/user-service/pkg/api/v1"
+	model "github.com/BigNutJaa/users/internals/model/users"
+	apiV1 "github.com/BigNutJaa/users/pkg/api/v1"
 	"github.com/opentracing/opentracing-go"
 )
 
@@ -23,9 +23,9 @@ func (c *Controller) List(ctx context.Context, request *apiV1.UsersListRequest) 
 	}
 	span.LogKV("Input Handler", request)
 	usersData, err := c.service.List(ctx, &model.FitterListUsers{
-		FullName:     request.GetFullName(),
-		Gender:       request.GetGender(),
-		Phone_number: request.GetPhoneNumber(),
+		User_name:  request.GetUserName(),
+		First_name: request.GetFirstName(),
+		Email:      request.GetEmail(),
 	}, pg)
 
 	if err != nil {
@@ -45,11 +45,10 @@ func (c *Controller) mapListUser(input *utils.Pagination) (*apiV1.UsersListRespo
 	}
 	for _, item := range items {
 		respone.Item = append(respone.Item, &apiV1.UserListItem{
-			FullName:    item.FullName,
-			Address:     item.Address,
-			PhoneNumber: item.PhoneNumber,
-			Gender:      item.Gender,
-			Id:          item.Id,
+			UserName:  item.User_name,
+			FirstName: item.First_name,
+			Email:     item.Email,
+			Id:        item.Id,
 		})
 	}
 	return respone, nil

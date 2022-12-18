@@ -1,13 +1,13 @@
-package stock
+package users
 
 import (
 	"context"
+	model "github.com/BigNutJaa/users/internals/model/users"
+
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
 )
 
-func (c *Controller) Delete(ctx context.Context, request *apiV1.StockDeleteRequest) (*apiV1.StockDeleteResponse, error) {
+func (c *Controller) Delete(ctx context.Context, request *apiV1.UsersDeleteRequest) (*apiV1.UsersDeleteResponse, error) {
 	span, ctx := opentracing.StartSpanFromContextWithTracer(
 		ctx,
 		opentracing.GlobalTracer(),

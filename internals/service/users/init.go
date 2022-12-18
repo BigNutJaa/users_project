@@ -1,7 +1,7 @@
 package users
 
 import (
-	"github.com/BigNutJaa/user-service/internals/repository/postgres"
+	"github.com/BigNutJaa/users/internals/repository/postgres"
 )
 
 type UsersService struct {

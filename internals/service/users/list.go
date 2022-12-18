@@ -3,10 +3,10 @@ package users
 import (
 	"context"
 	"errors"
-	"github.com/BigNutJaa/user-service/internals/utils"
+	"github.com/BigNutJaa/users/internals/utils"
 
-	"github.com/BigNutJaa/user-service/internals/entity"
-	model "github.com/BigNutJaa/user-service/internals/model/users"
+	"github.com/BigNutJaa/users/internals/entity"
+	model "github.com/BigNutJaa/users/internals/model/users"
 )
 
 func (s *UsersService) List(ctx context.Context, request *model.FitterListUsers, pagination *utils.PaginationOptions) (*utils.Pagination, error) {
@@ -32,11 +32,10 @@ func (s *UsersService) mapListUsers(ent *[]*entity.Users) []*model.ListResponseU
 	var list []*model.ListResponseUsers
 	for _, v := range *ent {
 		list = append(list, &model.ListResponseUsers{
-			Id:          int32(v.ID),
-			FullName:    v.FullName,
-			Address:     v.Address,
-			PhoneNumber: v.PhoneNumber,
-			Gender:      v.Gender,
+			Id:         int32(v.ID),
+			User_name:  v.UserName,
+			First_name: v.FirstName,
+			Email:      v.Email,
 		})
 	}
 	return list
@@ -45,14 +44,14 @@ func (s *UsersService) mapListUsers(ent *[]*entity.Users) []*model.ListResponseU
 func (s *UsersService) makeFilterUsersList(filters *model.FitterListUsers) (output map[string]interface{}) {
 	output = make(map[string]interface{})
 
-	if len(filters.FullName) > 0 {
-		output["full_name"] = filters.FullName
+	if len(filters.User_name) > 0 {
+		output["user_name"] = filters.User_name
 	}
-	if len(filters.Phone_number) > 0 {
-		output["phone_number"] = filters.Phone_number
+	if len(filters.First_name) > 0 {
+		output["first_name"] = filters.First_name
 	}
-	if len(filters.Gender) > 0 {
-		output["gender"] = filters.Gender
+	if len(filters.Email) > 0 {
+		output["email"] = filters.Email
 	}
 	return output
 

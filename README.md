@@ -16,6 +16,6 @@
 
 # Usage
 
-- GRPC : localhost:3010
-- HTTP : localhost:3011
-- Swagger : localhost:3011/swagger-ui
+- GRPC : localhost:3040
+- HTTP : localhost:3041
+- Swagger : localhost:3041/swagger-ui
