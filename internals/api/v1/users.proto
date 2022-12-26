@@ -8,7 +8,7 @@ option go_package = "/.;api_v1";
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
   info: {
-    title: "Users Service"
+    title: "Users_Admin Service"
     version: "1.0"
     contact: {
       name: "blueprint-roa-golang-grpc-gateway"

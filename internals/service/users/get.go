@@ -11,12 +11,11 @@ func (s *UsersService) Get(ctx context.Context, request *model.FitterReadUsers) 
 	makeFilter := s.makeFilterUsers(request)
 	users := &entity.Users{}
 	err := s.repository.Find(makeFilter, users)
-	decryptPass := StartDecrypt(users.Password)
 
 	return &model.ReadResponseUsers{
 		Id:         int32(users.ID),
 		User_name:  users.UserName,
-		Password:   decryptPass,
+		Password:   users.Password,
 		First_name: users.FirstName,
 		Last_name:  users.LastName,
 		Email:      users.Email,

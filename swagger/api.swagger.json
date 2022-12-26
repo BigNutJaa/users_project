@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users Service",
+    "title": "Users_Admin Service",
     "version": "1.0",
     "contact": {
       "name": "blueprint-roa-golang-grpc-gateway",
@@ -12,7 +12,6 @@
   "tags": [
     {
       "name": "UsersService"
-    }
   ],
   "schemes": [
     "http"
@@ -79,6 +78,48 @@
           "UsersService"
         ]
       },
+      "delete": {
+        "operationId": "UsersService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/api_v1UsersDeleteResponse"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UsersService"
+        ]
+      },
       "post": {
         "operationId": "UsersService_Create",
         "responses": {
@@ -110,6 +151,79 @@
             "schema": {
               "$ref": "#/definitions/api_v1UsersCreateRequest"
             }
+          }
+        ],
+        "tags": [
+          "UsersService"
+        ]
+      },
+      "patch": {
+        "operationId": "UsersService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/api_v1UsersUpdateResponse"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "passwordUpdate",
+            "description": "Update",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "firstNameUpdate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "lastNameUpdate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "emailUpdate",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "roleCodeUpdate",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -228,6 +342,24 @@
         }
       }
     },
+    "api_v1UsersDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
     "api_v1UsersGetResponse": {
       "type": "object",
       "properties": {
@@ -275,6 +407,29 @@
         "totalPages": {
           "type": "string",
           "format": "int64"
+        }
+      }
+    },
+    "api_v1UsersUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "roleCode": {
+          "type": "string"
         }
       }
     },

@@ -7,7 +7,7 @@ import (
 
 type Configuration struct {
 	AppName    string `env:"APP_NAME" envDefault:"blueprint-roa-golang"`
-	Port       int    `env:"PORT" envDefault:"3030"`
+	Port       int    `env:"PORT" envDefault:"3040"`
 	HttpPort   int    `env:"HTTP_PORT" envDefault:"3041"`
 	Env        string `env:"ENV" envDefault:"localhost"`
 	DbDriver   string `env:"DB_DRIVER" envDefault:"postgres"`

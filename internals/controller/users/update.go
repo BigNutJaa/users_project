@@ -2,34 +2,38 @@ package users
 
 import (
 	"context"
+	model "github.com/BigNutJaa/users/internals/model/users"
+	apiV1 "github.com/BigNutJaa/users/pkg/api/v1"
 	"github.com/opentracing/opentracing-go"
-	model "github.com/robowealth-mutual-fund/blueprint-roa-golang/internals/model/stock"
-	apiV1 "github.com/robowealth-mutual-fund/blueprint-roa-golang/pkg/api/v1"
 )
 
-func (c *Controller) Update(ctx context.Context, request *apiV1.StockUpdateRequest) (*apiV1.StockUpdateResponse, error) {
+func (c *Controller) Update(ctx context.Context, request *apiV1.UsersUpdateRequest) (*apiV1.UsersUpdateResponse, error) {
 	span, ctx := opentracing.StartSpanFromContextWithTracer(
 		ctx,
 		opentracing.GlobalTracer(),
-		"handler.stock.Update",
+		"handler.users.Update",
 	)
 	defer span.Finish()
 	span.LogKV("Input Handler", request)
-	stockData, err := c.service.Update(ctx, &model.FitterUpdateStock{
-		Name:      request.GetName(),
-		Detail:    request.GetDetail(),
-		Qty:       request.GetQty(),
-		Id:        request.GetId(),
-		QtyUpdate: request.GetQtyUpdate(),
+	stockData, err := c.service.Update(ctx, &model.FitterUpdateUsers{
+		User_name:        request.UserName,
+		Id:               request.Id,
+		PasswordUpdate:   request.PasswordUpdate,
+		First_nameUpdate: request.FirstNameUpdate,
+		Last_nameUpdate:  request.LastNameUpdate,
+		EmailUpdate:      request.EmailUpdate,
+		Role_codeUpdate:  request.RoleCodeUpdate,
 	})
 
 	if err != nil {
 		return nil, err
 	}
-	return &apiV1.StockUpdateResponse{
-		Name:   stockData.Name,
-		Detail: stockData.Detail,
-		Qty:    stockData.Qty,
-		Id:     stockData.Id,
+	return &apiV1.UsersUpdateResponse{
+		UserName:  stockData.User_name,
+		Password:  stockData.Password,
+		FirstName: stockData.First_name,
+		LastName:  stockData.Last_name,
+		Email:     stockData.Email,
+		RoleCode:  stockData.Role_code,
 	}, nil
 }
