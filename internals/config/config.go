@@ -28,6 +28,3 @@ func NewConfiguration() Configuration {
 
 	return config
 }
-
-// This should be in an env file in production (24 digits)
-const MySecret string = "kgmj12@nJuh8#od6gijr4(&2"

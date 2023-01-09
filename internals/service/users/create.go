@@ -4,12 +4,13 @@ import (
 	"context"
 	"github.com/BigNutJaa/users/internals/entity"
 	model "github.com/BigNutJaa/users/internals/model/users"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func (s *UsersService) Create(ctx context.Context, request *model.Request) (string, error) {
 
 	// encrypt password
-	encryptPass := StartEncrypt(request.Password)
+	encryptPass, _ := bcrypt.GenerateFromPassword([]byte(request.Password), 10)
 
 	// check user exists
 	userExist := request.User_name
@@ -26,7 +27,7 @@ func (s *UsersService) Create(ctx context.Context, request *model.Request) (stri
 
 		input := &entity.Users{
 			UserName:  request.User_name,
-			Password:  encryptPass,
+			Password:  string(encryptPass),
 			FirstName: request.First_name,
 			LastName:  request.Last_name,
 			Email:     request.Email,

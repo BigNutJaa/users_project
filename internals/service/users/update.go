@@ -2,6 +2,7 @@ package users
 
 import (
 	"context"
+	"golang.org/x/crypto/bcrypt"
 
 	"github.com/BigNutJaa/users/internals/entity"
 	model "github.com/BigNutJaa/users/internals/model/users"
@@ -9,10 +10,12 @@ import (
 
 func (s *UsersService) Update(ctx context.Context, request *model.FitterUpdateUsers) (*model.UpdateResponseUsers, error) {
 	makeFilter := s.makeFilterUsersUpdate(request)
-	encryptPass := StartEncrypt(request.PasswordUpdate)
+	encryptPass, _ := bcrypt.GenerateFromPassword([]byte(request.PasswordUpdate), 10)
+
 	usersUpdate := &entity.Users{
+		ID:        int(request.Id),
 		UserName:  request.User_name,
-		Password:  encryptPass,
+		Password:  string(encryptPass),
 		FirstName: request.First_nameUpdate,
 		LastName:  request.Last_nameUpdate,
 		Email:     request.EmailUpdate,

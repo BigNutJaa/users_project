@@ -1,6 +1,8 @@
 package container
 
 import (
+	controllerToken "github.com/BigNutJaa/users/internals/controller/token"
+	"github.com/BigNutJaa/users/internals/service/token"
 	"net/http"
 
 	controllerUsers "github.com/BigNutJaa/users/internals/controller/users"
@@ -45,8 +47,9 @@ func (c *Container) Configure() error {
 		utils.NewUtils,
 		utils.NewCustomValidator,
 		users.NewService,
-
+		token.NewService,
 		controllerUsers.NewController,
+		controllerToken.NewController,
 	}
 	for _, service := range servicesConstructors {
 		if err := c.container.Provide(service); err != nil {
